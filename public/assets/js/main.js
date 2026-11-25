@@ -249,7 +249,7 @@ window.initializeGeexDashboard = function () {
 				let menuParent = $(this).closest('.has-children').find('ul').siblings('a');
 				$(this).addClass('active');
 				menuParent.addClass('active');
-				menuParent.siblings('.geex-sidebar__submenu').slideDown();
+				menuParent.siblings('.geex-sidebar__submenu').show();
 
 			} else if (pageSlug === '' || pageSlug === '#') {
 				$('.geex-header__menu__link').first().addClass('active');
@@ -343,7 +343,9 @@ window.initializeGeexDashboard = function () {
 	bindClick($(".geex-content__calendar__toggle"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
-		$(".geex-content__calendar__sidebar").slideToggle();
+		const sidebar = $(this).siblings(".geex-content__calendar__sidebar");
+    $(this).attr("aria-expanded", String(!sidebar.is(":visible")));
+    sidebar.stop(true, true).slideToggle();
   	});
 
   	// Chat Sidebar Toggle
@@ -538,7 +540,7 @@ window.initializeGeexDashboard = function () {
   // Calendar
   const calendarElement = document.getElementById("geex-calendar");
   if (calendarElement && window.FullCalendar) {
-    const layout = calendarElement.closest(".geex-calendar-layout");
+    const layout = calendarElement.closest(".geex-content__calendar");
     const dateInput = layout.querySelector("[data-calendar-schedule-date]");
     const agenda = layout.querySelector("[data-calendar-agenda]");
     const emptyAgenda = layout.querySelector("[data-calendar-empty]");
@@ -550,10 +552,14 @@ window.initializeGeexDashboard = function () {
     let selectedDay = localDate(new Date());
 
     function showEvent(event) {
-      dialog.querySelector("h3").textContent = event.title;
-      dialog.querySelector("[data-calendar-details-date]").textContent = formatDate.format(event.start)
-        + (event.allDay ? " · All day" : " · " + formatTime.format(event.start));
-      dialog.querySelector("[data-calendar-details-description]").textContent = event.extendedProps.description || "";
+      showDetails(event.title, formatDate.format(event.start)
+        + (event.allDay ? " · All day" : " · " + formatTime.format(event.start)), event.extendedProps.description);
+    }
+
+    function showDetails(title, date, description) {
+      dialog.querySelector("h3").textContent = title;
+      dialog.querySelector("[data-calendar-details-date]").textContent = date;
+      dialog.querySelector("[data-calendar-details-description]").textContent = description || "";
       if (!dialog.open) dialog.showModal();
     }
 
@@ -585,20 +591,35 @@ window.initializeGeexDashboard = function () {
     const calendar = new window.FullCalendar.Calendar(calendarElement, {
       height: "auto",
       fixedWeekCount: false,
-      headerToolbar: { left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek,timeGridDay" },
+      headerToolbar: { left: "title prev,next", center: "", right: "dayGridMonth,timeGridWeek,timeGridDay" },
       dayMaxEvents: true,
       dayMaxEventRows: 3,
-      events: [
-        { title: "Team lunch", daysOfWeek: [1, 2, 3, 4, 5], startTime: "12:00", endTime: "12:30" },
-        { title: "Weekly planning", daysOfWeek: [1], startTime: "09:00", endTime: "10:00" },
-        { title: "Project review", daysOfWeek: [4], startTime: "14:00", endTime: "15:00" },
-      ],
+      events(info, success) {
+        const events = [];
+        for (let month = new Date(info.start.getFullYear(), info.start.getMonth(), 1);
+          month < info.end;
+          month.setMonth(month.getMonth() + 1)) {
+          const date = day => localDate(new Date(month.getFullYear(), month.getMonth(), day));
+          events.push(
+            { title: "All Day Event", start: date(1), allDay: true },
+            { title: "Long Event", start: date(7), end: date(10), allDay: true },
+            { title: "Repeating Event", start: date(9) + "T16:00:00" },
+            { title: "Repeating Event", start: date(16) + "T16:00:00" },
+            { title: "Conference", start: date(23), end: date(25), allDay: true },
+            { title: "Meeting", start: date(26) + "T10:30:00" },
+            { title: "Lunch", start: date(26) + "T12:00:00" },
+          );
+        }
+        success(events);
+      },
+      eventDisplay: "block",
       businessHours: { daysOfWeek: [1, 2, 3, 4, 5], startTime: "08:00", endTime: "16:30" },
       slotMinTime: "06:00:00",
       slotMaxTime: "21:00:00",
       dateClick(info) {
         selectedDay = localDate(info.date);
         renderAgenda(calendar.getEvents());
+        if (agendaPanel.hidden) toggleAgenda();
       },
       datesSet(info) {
         if (selectedDay < localDate(info.start) || selectedDay >= localDate(info.end)) {
@@ -653,6 +674,17 @@ window.initializeGeexDashboard = function () {
     }
     loadLocalEvents();
     calendar.render();
+    const agendaToggle = layout.querySelector("[data-calendar-agenda-toggle]");
+    const agendaPanel = layout.querySelector("#calendar-day-agenda");
+    function toggleAgenda() {
+      agendaPanel.hidden = !agendaPanel.hidden;
+      agendaToggle.setAttribute("aria-expanded", String(!agendaPanel.hidden));
+    }
+    bindClick($(agendaToggle), toggleAgenda);
+    bindClick($(layout.querySelectorAll("[data-calendar-feature]")), function(event) {
+      event.preventDefault();
+      showDetails("Client Weekly Meeting", "09:00 AM - 10:00 AM", "Weekly face-to-face meeting with John Braun.");
+    });
     bindClick($(layout.querySelector(".geex-btn__add-modal")), () => { newEventDate.value = selectedDay; });
     dateInput.addEventListener("change", selectDate);
     window.addEventListener("geex:demo-records", handleLocalEvent);

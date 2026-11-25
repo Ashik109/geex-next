@@ -21,27 +21,117 @@ export default function CalendarPage() {
                 {"Calendar"}
               </h2>
               <p className={"geex-content__header__subtitle"}>
-                Browse your schedule and add events.
+                {"Form Elements is used to style and format the input field"}
               </p>
             </div>
             <HeaderActions />
           </div>
           <div className={"geex-content__wrapper"}>
             <div className={"geex-content__section-wrapper"}>
-              <section className="geex-calendar-layout" aria-label="Calendar and schedule">
-                <aside className="geex-calendar-schedule" aria-label="Selected day schedule">
-                  <button type="button" className="geex-btn geex-btn--primary geex-btn__add-modal">
-                    <i className="uil-plus" aria-hidden="true" /> New Event
-                  </button>
-                  <h3>Day Schedule</h3>
-                  <label className="geex-calendar-date-label">
-                    Select date
-                    <input type="date" data-calendar-schedule-date />
-                  </label>
-                  <p data-calendar-empty>No events on this day.</p>
-                  <ul data-calendar-agenda />
-                </aside>
-                <div className="geex-calendar-panel">
+              <div className={"geex-content__section geex-content__section--transparent geex-content__calendar"}>
+                <button type="button" className="geex-btn geex-content__calendar__toggle" aria-controls="calendar-sidebar" aria-expanded="false">
+                  <i className={"uil-bars"} />
+                  {" Event List "}
+                </button>
+                <div id="calendar-sidebar" className="geex-content__calendar__sidebar">
+                  <div className={"geex-content__calendar__sidebar__header"}>
+                    <button className={"geex-btn geex-btn--primary geex-btn__add-modal"}>
+                      <i className={"uil-plus"} />
+                      {" New Event "}
+                    </button>
+                  </div>
+                  <div className={"geex-content__calendar__sidebar__meeting"}>
+                    <span className={"geex-content__calendar__sidebar__meeting__label"}>
+                      {"My Schedule Today"}
+                    </span>
+                    <div className={"geex-content__calendar__sidebar__meeting__single"}>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__text"}>
+                        <h4 className={"geex-content__calendar__sidebar__meeting__single__title"}>
+                          {"Client Weekly Meeting"}
+                        </h4>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__time"}>
+                          {"09:00 AM - 10:00 AM"}
+                        </span>
+                      </div>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__tag"}>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__tag__item danger"}>
+                          {" Urgent "}
+                        </span>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__tag__item success"}>
+                          {" Face to face "}
+                        </span>
+                      </div>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__author"}>
+                        <div className={"geex-content__calendar__sidebar__meeting__single__author__img"}>
+                          <img src={"/assets/img/avatar/chat/1.svg"} alt={"avatar"} />
+                        </div>
+                        <div className={"geex-content__calendar__sidebar__meeting__single__author__content"}>
+                          <div className={"geex-content__calendar__sidebar__meeting__single__author__text"}>
+                            <span className={"geex-content__calendar__sidebar__meeting__single__author__title"}>
+                              {"John Braun"}
+                            </span>
+                            <a href="#calendar-event-title" data-calendar-feature className="geex-content__calendar__sidebar__meeting__single__author__btn">
+                              {"View details"}
+                            </a>
+                          </div>
+                          <div className={"geex-content__calendar__sidebar__meeting__single__author__icon"}>
+                            <a href="#calendar-event-title" data-calendar-feature aria-label="View client weekly meeting details">
+                              <i className={"uil-angle-right"} />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={"geex-content__calendar__sidebar__meeting__single"}>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__text"}>
+                        <h4 className={"geex-content__calendar__sidebar__meeting__single__title"}>
+                          {"Maintenance CenterLoad Balancer"}
+                        </h4>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__time"}>
+                          {"09:00 AM - 10:30 AM"}
+                        </span>
+                      </div>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__tag"}>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__tag__item primary"}>
+                          {" Fixing "}
+                        </span>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__tag__item warning"}>
+                          {" Backend "}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={"geex-content__calendar__sidebar__meeting__single"}>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__text"}>
+                        <h4 className={"geex-content__calendar__sidebar__meeting__single__title"}>
+                          {"Check Annual Report"}
+                        </h4>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__time"}>
+                          {"09:00 AM - 10:30 AM"}
+                        </span>
+                      </div>
+                      <div className={"geex-content__calendar__sidebar__meeting__single__tag"}>
+                        <span className={"geex-content__calendar__sidebar__meeting__single__tag__item info"}>
+                          {" Report "}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={"geex-content__calendar__sidebar__bottom"}>
+                    <button type="button" data-calendar-agenda-toggle aria-expanded="false" aria-controls="calendar-day-agenda" className="geex-btn geex-content__calendar__sidebar__bottom__btn">
+                      {"View More "}
+                      <i className={"uil-arrow-right"} />
+                    </button>
+                  </div>
+                  <section id="calendar-day-agenda" className="geex-calendar-agenda" hidden aria-label="Selected day schedule">
+                    <label className="geex-calendar-date-label">
+                      Select date
+                      <input type="date" data-calendar-schedule-date />
+                    </label>
+                    <p data-calendar-empty>No events on this day.</p>
+                    <ul data-calendar-agenda />
+                  </section>
+                </div>
+                <div className="geex-content__calendar__content">
                   <div className={"geex-content__modal__form"}>
                     <div className={"geex-content__modal__form__header"}>
                       <h3 className={"geex-content__modal__form__title"}>
@@ -56,7 +146,7 @@ export default function CalendarPage() {
                         <input type={"text"} name="title" className={"geex-content__modal__form__input"} placeholder="Event Title" aria-label="Event Title" required maxLength={120} />
                       </div>
                       <div className={"geex-content__modal__form__item"}>
-                        <textarea name="description" aria-label="Description" maxLength={500} className={"geex-content__modal__form__input geex-content__modal__form__input--textarea"} placeholder="Event description" />
+                        <textarea name="description" aria-label="Description" maxLength={500} className={"geex-content__modal__form__input geex-content__modal__form__input--textarea"} placeholder={"Event Description"} />
                       </div>
                       <div className={"geex-content__modal__form__item"}>
                         <label>Event date <input type="date" name="date" className="geex-content__modal__form__input" required /></label>
@@ -78,7 +168,7 @@ export default function CalendarPage() {
                     </form>
                   </dialog>
                 </div>
-              </section>
+              </div>
             </div>
           </div>
         </div>
