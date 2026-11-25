@@ -538,11 +538,56 @@ window.initializeGeexDashboard = function () {
   // Calendar
   const calendarElement = document.getElementById("geex-calendar");
   if (calendarElement && window.FullCalendar) {
+    const layout = calendarElement.closest(".geex-calendar-layout");
+    const dateInput = layout.querySelector("[data-calendar-schedule-date]");
+    const agenda = layout.querySelector("[data-calendar-agenda]");
+    const emptyAgenda = layout.querySelector("[data-calendar-empty]");
+    const dialog = layout.querySelector("[data-calendar-details]");
+    const newEventDate = layout.querySelector('input[name="date"]');
+    const localDate = date => [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-");
+    const formatDate = new Intl.DateTimeFormat(undefined, { dateStyle: "full" });
+    const formatTime = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+    let selectedDay = localDate(new Date());
+
+    function showEvent(event) {
+      dialog.querySelector("h3").textContent = event.title;
+      dialog.querySelector("[data-calendar-details-date]").textContent = formatDate.format(event.start)
+        + (event.allDay ? " · All day" : " · " + formatTime.format(event.start));
+      dialog.querySelector("[data-calendar-details-description]").textContent = event.extendedProps.description || "";
+      if (!dialog.open) dialog.showModal();
+    }
+
+    function renderAgenda(events) {
+      dateInput.value = selectedDay;
+      newEventDate.value = selectedDay;
+      const dayEvents = events.filter(event => event.start && localDate(event.start) === selectedDay)
+        .sort((left, right) => left.start - right.start);
+      const items = dayEvents.map(event => {
+        const li = document.createElement("li");
+        const button = document.createElement("button");
+        const title = document.createElement("strong");
+        const time = document.createElement("span");
+        button.type = "button";
+        title.textContent = event.title;
+        time.textContent = event.allDay ? "All day" : formatTime.format(event.start);
+        button.append(title, time);
+        button.addEventListener("click", () => showEvent(event));
+        li.append(button);
+        return li;
+      });
+      agenda.replaceChildren(...items);
+      emptyAgenda.hidden = items.length > 0;
+      calendarElement.querySelectorAll("[data-date]").forEach(cell => {
+        cell.classList.toggle("geex-calendar-selected", cell.dataset.date === selectedDay);
+      });
+    }
+
     const calendar = new window.FullCalendar.Calendar(calendarElement, {
-      navLinks: true,
-      height: 650,
-      headerToolbar: { left: "title prev,next", right: "dayGridMonth,timeGridWeek,timeGridDay" },
+      height: "auto",
+      fixedWeekCount: false,
+      headerToolbar: { left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek,timeGridDay" },
       dayMaxEvents: true,
+      dayMaxEventRows: 3,
       events: [
         { title: "Team lunch", daysOfWeek: [1, 2, 3, 4, 5], startTime: "12:00", endTime: "12:30" },
         { title: "Weekly planning", daysOfWeek: [1], startTime: "09:00", endTime: "10:00" },
@@ -551,7 +596,31 @@ window.initializeGeexDashboard = function () {
       businessHours: { daysOfWeek: [1, 2, 3, 4, 5], startTime: "08:00", endTime: "16:30" },
       slotMinTime: "06:00:00",
       slotMaxTime: "21:00:00",
+      dateClick(info) {
+        selectedDay = localDate(info.date);
+        renderAgenda(calendar.getEvents());
+      },
+      datesSet(info) {
+        if (selectedDay < localDate(info.start) || selectedDay >= localDate(info.end)) {
+          selectedDay = localDate(calendar.getDate());
+        }
+        renderAgenda(calendar.getEvents());
+      },
+      eventsSet: renderAgenda,
+      eventClick(info) { showEvent(info.event); },
+      eventDidMount(info) {
+        info.el.tabIndex = 0;
+        info.el.setAttribute("role", "button");
+        info.el.setAttribute("aria-label", info.event.title);
+        info.el.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            showEvent(info.event);
+          }
+        });
+      },
     });
+
     let localEvents;
     function loadLocalEvents() {
       localEvents?.remove();
@@ -562,16 +631,33 @@ window.initializeGeexDashboard = function () {
           title: record.title,
           start: record.date,
           allDay: true,
+          description: record.description,
         })));
       } catch {}
     }
     function handleLocalEvent(event) {
-      if (event.detail === "calendar") loadLocalEvents();
+      if (event.detail !== "calendar") return;
+      const date = newEventDate.value;
+      loadLocalEvents();
+      if (date) {
+        selectedDay = date;
+        calendar.gotoDate(date);
+        renderAgenda(calendar.getEvents());
+      }
+    }
+    function selectDate() {
+      if (!dateInput.value) return;
+      selectedDay = dateInput.value;
+      calendar.gotoDate(selectedDay);
+      renderAgenda(calendar.getEvents());
     }
     loadLocalEvents();
     calendar.render();
+    bindClick($(layout.querySelector(".geex-btn__add-modal")), () => { newEventDate.value = selectedDay; });
+    dateInput.addEventListener("change", selectDate);
     window.addEventListener("geex:demo-records", handleLocalEvent);
     cleanups.push(() => {
+      dateInput.removeEventListener("change", selectDate);
       window.removeEventListener("geex:demo-records", handleLocalEvent);
       calendar.destroy();
     });
