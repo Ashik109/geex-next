@@ -258,7 +258,7 @@ window.initializeGeexDashboard = function () {
 	// Get the path
 	let path = window.location.pathname;
 	let pathSegments = path.split('/');
-	let pageSlug = pathSegments.filter(Boolean).pop() || '';
+	let pageSlug = pathSegments.filter(Boolean)[0] || '';
 
 	addActiveClass(pageSlug);
 

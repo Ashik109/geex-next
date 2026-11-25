@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { blogPosts, blogPostPath } from "@/data/blog-posts";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -21,241 +22,39 @@ export default function BlogPage() {
                 {"Blog"}
               </h2>
               <p className={"geex-content__header__subtitle"}>
-                {"Form Elements is used to style and format the input field"}
+                Articles on business, finance, and technology
               </p>
             </div>
             <HeaderActions />
           </div>
           <div className={"geex-content__blog"}>
             <div className={"geex-content__blog__wrapper"}>
-              <div className={"row"}>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/2.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
-                      </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"Getting eyeballs what you write for business tricky."}
+              <div className="row">
+                {blogPosts.map(post => (
+                  <div key={post.slug} className="col-xxl-3 col-xl-4 col-md-6 mb-25">
+                    <article className="geex-content__blog__single">
+                      <div className="geex-content__blog__single__img">
+                        <Link href={blogPostPath(post.slug)} aria-label={post.title}>
+                          <img src={post.image} alt="" />
                         </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/4.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
                       </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"Which tool seems the best content writing strategy"}
-                        </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/3.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
+                      <div className="geex-content__blog__single__content">
+                        <div className="geex-content__blog__single__quickinfo">
+                          <span>{post.author}</span>
+                          <time dateTime={post.publishedAt}>{post.dateLabel}</time>
+                        </div>
+                        <h5 className="geex-content__blog__single__title">
+                          <Link href={blogPostPath(post.slug)}>{post.title}</Link>
+                        </h5>
                       </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"More then just buzzwords market concepts of SEO"}
-                        </Link>
-                      </h5>
-                    </div>
+                    </article>
                   </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/1.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
-                      </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"Understanding Lending The Basics and Beyond"}
-                        </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-sm-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/2.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
-                      </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"Getting eyeballs what you write for business is tricky"}
-                        </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-sm-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/3.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
-                      </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"Xi, Putin hail 'new era' of ties in united..."}
-                        </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6 mb-sm-25"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/4.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
-                      </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"How to Start Cloud Kitchen 6 Proven Steps."}
-                        </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className={"col-xxl-3 col-xl-4 col-md-6"}>
-                  <div className={"geex-content__blog__single"}>
-                    <div className={"geex-content__blog__single__img"}>
-                      <Link href={"/blog-details"}>
-                        <img src={"/assets/img/blog/1.png"} alt={"Single Blog"} />
-                      </Link>
-                    </div>
-                    <div className={"geex-content__blog__single__content"}>
-                      <div className={"geex-content__blog__single__quickinfo"}>
-                        <a href={"#"}>
-                          {"Amir Nisi"}
-                        </a>
-                        <span>
-                          {"10 September, 2024"}
-                        </span>
-                      </div>
-                      <h5 className={"geex-content__blog__single__title"}>
-                        <Link href={"/blog-details"}>
-                          {"What can you pay and buy with a credit card?."}
-                        </Link>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={"geex-content__form__single d-flex gap-20 justify-content-between pb-0"}>
-              <div className={"geex-content__form__single__left"}>
-                <p className={"geex-content__form__single__text"}>
-                  {"Showing 4 of 256 data"}
-                </p>
-              </div>
-              <div className={"geex-content__form__single__right d-flex gap-20"}>
-                <ul className={"geex-content__pagination flex gap-10"}>
-                  <li className={"geex-content__pagination__item"}>
-                    <a href={"#"} className={"geex-content__pagination__link active"}>
-                      {" 1 "}
-                    </a>
-                  </li>
-                  <li className={"geex-content__pagination__item"}>
-                    <a href={"#"} className={"geex-content__pagination__link"}>
-                      {" 2 "}
-                    </a>
-                  </li>
-                  <li className={"geex-content__pagination__item"}>
-                    <a href={"#"} className={"geex-content__pagination__link"}>
-                      {" 3 "}
-                    </a>
-                  </li>
-                </ul>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </main>
-
-
-
-
     </>
   );
 }
