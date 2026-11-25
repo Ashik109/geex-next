@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DemoAuthForm from "@/components/DemoAuthForm";
 import GeexResources from "@/components/GeexResources";
 export const metadata = { title: "SignUp - Geex Dashboard", icons: { icon: "/assets/img/favicon.svg" } };
@@ -11,10 +12,10 @@ export default function SignupPage() {
           <div className={"geex-content__authentication__content"}>
             <div className={"geex-content__authentication__content__wrapper"}>
               <div className={"geex-content__authentication__content__logo"}>
-                <a href={"/"}>
+                <Link href={"/"}>
                   <img className={"logo-lite"} src={"/assets/img/logo-dark.svg"} alt={"logo"} />
                   <img className={"logo-dark"} src={"/assets/img/logo-lite.svg"} alt={"logo"} />
-                </a>
+                </Link>
               </div>
               <DemoAuthForm id={"signInForm"} className={"geex-content__authentication__form"} preview={"signup"}>
                 <h2 className={"geex-content__authentication__title"}>
@@ -74,9 +75,9 @@ export default function SignupPage() {
                 </div>
                 <div className={"geex-content__authentication__form-footer"}>
                   {" already have an account? "}
-                  <a href={"/signin"}>
+                  <Link href={"/signin"}>
                     {"Sign In"}
-                  </a>
+                  </Link>
                 </div>
               </DemoAuthForm>
             </div>

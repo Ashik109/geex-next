@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -146,9 +147,9 @@ export default function BlogDetailsPage() {
                       <div className={"geex-content__blog_details__news__inner"}>
                         <div className={"geex-content__blog_details__news__story"}>
                           <div className={"geex-content__blog_details__news__story__img"}>
-                            <a href={"/blog-details"}>
+                            <Link href={"/blog-details"}>
                               <img src={"/assets/img/blog/1.png"} alt={"geex"} />
-                            </a>
+                            </Link>
                           </div>
                           <div className={"geex-content__blog_details__news__story__content"}>
                             <h6 className={"geex-content__blog_details__news__story__title"}>
@@ -164,9 +165,9 @@ export default function BlogDetailsPage() {
                         </div>
                         <div className={"geex-content__blog_details__news__story"}>
                           <div className={"geex-content__blog_details__news__story__img"}>
-                            <a href={"/blog-details"}>
+                            <Link href={"/blog-details"}>
                               <img src={"/assets/img/blog/2.png"} alt={"geex"} />
-                            </a>
+                            </Link>
                           </div>
                           <div className={"geex-content__blog_details__news__story__content"}>
                             <h6 className={"geex-content__blog_details__news__story__title"}>
@@ -274,9 +275,9 @@ export default function BlogDetailsPage() {
                       <div className={"geex-content__widget__article__wrapper"}>
                         <div className={"geex-content__widget__article"}>
                           <div className={"geex-content__widget__article__img"}>
-                            <a href={"/blog-details"}>
+                            <Link href={"/blog-details"}>
                               <img src={"/assets/img/blog/1.png"} alt={"geex"} />
-                            </a>
+                            </Link>
                           </div>
                           <div className={"geex-content__widget__article__content"}>
                             <div className={"geex-content__widget__quickinfo"}>
@@ -296,9 +297,9 @@ export default function BlogDetailsPage() {
                         </div>
                         <div className={"geex-content__widget__article"}>
                           <div className={"geex-content__widget__article__img"}>
-                            <a href={"/blog-details"}>
+                            <Link href={"/blog-details"}>
                               <img src={"/assets/img/blog/3.png"} alt={"geex"} />
-                            </a>
+                            </Link>
                           </div>
                           <div className={"geex-content__widget__article__content"}>
                             <div className={"geex-content__widget__quickinfo"}>
@@ -318,9 +319,9 @@ export default function BlogDetailsPage() {
                         </div>
                         <div className={"geex-content__widget__article"}>
                           <div className={"geex-content__widget__article__img"}>
-                            <a href={"/blog-details"}>
+                            <Link href={"/blog-details"}>
                               <img src={"/assets/img/blog/4.png"} alt={"geex"} />
-                            </a>
+                            </Link>
                           </div>
                           <div className={"geex-content__widget__article__content"}>
                             <div className={"geex-content__widget__quickinfo"}>
@@ -340,9 +341,9 @@ export default function BlogDetailsPage() {
                         </div>
                         <div className={"geex-content__widget__article"}>
                           <div className={"geex-content__widget__article__img"}>
-                            <a href={"/blog-details"}>
+                            <Link href={"/blog-details"}>
                               <img src={"/assets/img/blog/2.png"} alt={"geex"} />
-                            </a>
+                            </Link>
                           </div>
                           <div className={"geex-content__widget__article__content"}>
                             <div className={"geex-content__widget__quickinfo"}>

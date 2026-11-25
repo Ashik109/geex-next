@@ -8,9 +8,8 @@ export default defineConfig([
   {
     files: ["src/app/**/*.tsx", "src/components/**/*.tsx"],
     rules: {
-      // Preserve the template's static images and reset page-local plugins on navigation.
+      // Preserve the template's static images.
       "@next/next/no-img-element": "off",
-      "@next/next/no-html-link-for-pages": "off",
     },
   },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "public/assets/**", "public/landing-assets/**"]),

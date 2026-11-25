@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -19,19 +20,19 @@ export default function Footer() {
           </div>
           <ul className={"geex-footer__menu"}>
             <li className={"geex-footer__meu__item"}>
-              <a href={"/terms"}>
+              <Link href={"/terms"}>
                 {"Privacy"}
-              </a>
+              </Link>
             </li>
             <li className={"geex-footer__meu__item"}>
-              <a href={"/blog"}>
+              <Link href={"/blog"}>
                 {"Blog"}
-              </a>
+              </Link>
             </li>
             <li className={"geex-footer__meu__item"}>
-              <a href={"/faq"}>
+              <Link href={"/faq"}>
                 {"Faq"}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

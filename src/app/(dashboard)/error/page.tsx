@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -25,9 +26,9 @@ export default function ErrorPage() {
                 <p className={"geex-content__error__desc"}>
                   {"Sorry, the page you seems looking for, has been moved, redirected or removed permanently."}
                 </p>
-                <a className={"geex-btn"} href={"/"}>
+                <Link className={"geex-btn"} href={"/"}>
                   {" Back to Homepage"}
-                </a>
+                </Link>
               </div>
             </div>
           </div>

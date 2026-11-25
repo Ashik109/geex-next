@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GeexResources from "@/components/GeexResources";
 export const metadata = { title: "Geex - Admin Dashboard Next.js Template", icons: { icon: "/landing-assets/images/fav.svg" } };
 
@@ -11,9 +12,9 @@ export default function LandingPage() {
             <div className={"col-lg-12"}>
               <div className={"header-style-one-wrapper"}>
                 <div className={"logo-area"}>
-                  <a href={"/landing"} className={"logo"}>
+                  <Link href={"/landing"} className={"logo"}>
                     <img src={"/landing-assets/images/logo-1.svg"} alt={"logo"} />
-                  </a>
+                  </Link>
                 </div>
                 <nav className={"main-nav-area"}>
                   <ul className={"list-unstyled geex-desktop-menu"}>
@@ -169,56 +170,56 @@ export default function LandingPage() {
               <div className={"col-lg-6 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/demos/01.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Default Demo"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-6 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/index-2"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/index-2"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/demos/02.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/index-2"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/index-2"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Banking Demo"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-6 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/index-3"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/index-3"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/demos/03.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/index-3"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/index-3"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Crypto Demo"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-6 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/index-4"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/index-4"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/demos/04.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/index-4"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/index-4"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Invoicing Demo"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
@@ -277,84 +278,84 @@ export default function LandingPage() {
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/todo"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/todo"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/app-01.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/todo"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/todo"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Todo"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/chat"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/chat"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/app-02.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/chat"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/chat"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Chat"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/calendar"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/calendar"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/app-03.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/calendar"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/calendar"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Calender"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/file-manager"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/file-manager"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/app-04.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/file-manager"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/file-manager"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"File Manager"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/contact"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/contact"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/app-05.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/contact"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/contact"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Contact"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/kanban"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/kanban"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/app-06.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/kanban"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/kanban"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Kanban"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
@@ -383,112 +384,112 @@ export default function LandingPage() {
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/blog"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/blog"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/01.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/blog"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/blog"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Blog"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/faq"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/faq"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/02.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/faq"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/faq"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"FAQ"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/pricing"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/pricing"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/03.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/pricing"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/pricing"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Pricing"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/testimonial"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/testimonial"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/04.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/testimonial"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/testimonial"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Testimonial"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/terms"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/terms"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/05.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/terms"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/terms"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Terms & Conditions"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/signin"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/signin"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/06.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/signin"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/signin"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Sign In"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/error"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/error"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/07.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/error"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/error"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Error"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <div className={"col-lg-4 col-md-6 col-sm-12"}>
                 <div className={"demo-wrapper wow fadeIn"} data-wow-duration={"1.2s"} data-wow-delay={".5s"}>
                   <div className={"image-area"}>
-                    <a href={"/maintenance"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/maintenance"} target={"_blank"} rel={"noopener noreferrer"}>
                       <img src={"/landing-assets/images/inner/08.webp"} alt={""} />
-                    </a>
+                    </Link>
                   </div>
                   <h3 className={"content"}>
-                    <a href={"/maintenance"} target={"_blank"} rel={"noopener noreferrer"}>
+                    <Link href={"/maintenance"} target={"_blank"} rel={"noopener noreferrer"}>
                       {"Maintenance"}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>

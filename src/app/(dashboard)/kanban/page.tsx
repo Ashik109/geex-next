@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -26,10 +27,10 @@ export default function KanbanPage() {
             <HeaderActions />
           </div>
           <div className={"kanban-inner-main-style"}>
-            <a href={"/"} className={"backto-home-btn"}>
+            <Link href={"/"} className={"backto-home-btn"}>
               <i className={"uil-arrow-left"} />
               {" Back to Projects"}
-            </a>
+            </Link>
             <div className={"kanban-between-area--wrapper-top"}>
               <div className={"left"}>
                 <h1 className={"title"}>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -31,9 +32,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/2.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -45,9 +46,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"Getting eyeballs what you write for business tricky."}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -55,9 +56,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/4.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -69,9 +70,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"Which tool seems the best content writing strategy"}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -79,9 +80,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/3.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -93,9 +94,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"More then just buzzwords market concepts of SEO"}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -103,9 +104,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/1.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -117,9 +118,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"Understanding Lending The Basics and Beyond"}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -127,9 +128,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-sm-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/2.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -141,9 +142,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"Getting eyeballs what you write for business is tricky"}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -151,9 +152,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-sm-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/3.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -165,9 +166,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"Xi, Putin hail 'new era' of ties in united..."}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -175,9 +176,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6 mb-sm-25"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/4.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -189,9 +190,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"How to Start Cloud Kitchen 6 Proven Steps."}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>
@@ -199,9 +200,9 @@ export default function BlogPage() {
                 <div className={"col-xxl-3 col-xl-4 col-md-6"}>
                   <div className={"geex-content__blog__single"}>
                     <div className={"geex-content__blog__single__img"}>
-                      <a href={"/blog-details"}>
+                      <Link href={"/blog-details"}>
                         <img src={"/assets/img/blog/1.png"} alt={"Single Blog"} />
-                      </a>
+                      </Link>
                     </div>
                     <div className={"geex-content__blog__single__content"}>
                       <div className={"geex-content__blog__single__quickinfo"}>
@@ -213,9 +214,9 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h5 className={"geex-content__blog__single__title"}>
-                        <a href={"/blog-details"}>
+                        <Link href={"/blog-details"}>
                           {"What can you pay and buy with a credit card?."}
-                        </a>
+                        </Link>
                       </h5>
                     </div>
                   </div>

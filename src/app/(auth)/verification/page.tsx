@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DemoAuthForm from "@/components/DemoAuthForm";
 import GeexResources from "@/components/GeexResources";
 export const metadata = { title: "Two Step Verification - Geex Dashboard", icons: { icon: "/assets/img/favicon.svg" } };
@@ -11,9 +12,9 @@ export default function VerificationPage() {
           <div className={"geex-content__authentication__content"}>
             <div className={"geex-content__authentication__content__wrapper"}>
               <div className={"geex-content__authentication__content__logo"}>
-                <a href={"/"}>
+                <Link href={"/"}>
                   <img src={"/assets/img/logo.svg"} alt={""} />
-                </a>
+                </Link>
               </div>
               <DemoAuthForm id={"signInForm"} className={"geex-content__authentication__form"} preview={"verification"}>
                 <h2 className={"geex-content__authentication__title"}>

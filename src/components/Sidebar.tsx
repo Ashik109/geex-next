@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
@@ -8,10 +9,10 @@ export default function Sidebar() {
         </a>
         <div className={"geex-sidebar__wrapper"}>
           <div className={"geex-sidebar__header"}>
-            <a href={"/"} className={"geex-sidebar__logo"}>
+            <Link href={"/"} className={"geex-sidebar__logo"}>
               <img className={"logo-lite"} src={"/assets/img/logo-dark.svg"} alt={"logo"} />
               <img className={"logo-dark"} src={"/assets/img/logo-lite.svg"} alt={"logo"} />
-            </a>
+            </Link>
           </div>
           <nav className={"geex-sidebar__menu-wrapper"}>
             <ul className={"geex-sidebar__menu"}>
@@ -33,24 +34,24 @@ export default function Sidebar() {
                 </a>
                 <ul className={"geex-sidebar__submenu"}>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/"} className={"geex-sidebar__menu__link"}>
                       {"Server Management"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/index-2"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/index-2"} className={"geex-sidebar__menu__link"}>
                       {"Banking"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/index-3"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/index-3"} className={"geex-sidebar__menu__link"}>
                       {"Crypto"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/index-4"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/index-4"} className={"geex-sidebar__menu__link"}>
                       {"Invoicing"}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -127,34 +128,34 @@ export default function Sidebar() {
                 </a>
                 <ul className={"geex-sidebar__submenu"}>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/todo"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/todo"} className={"geex-sidebar__menu__link"}>
                       {"Todo"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/chat"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/chat"} className={"geex-sidebar__menu__link"}>
                       {"Chat"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/calendar"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/calendar"} className={"geex-sidebar__menu__link"}>
                       {"Calendar"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/file-manager"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/file-manager"} className={"geex-sidebar__menu__link"}>
                       {"File Manager"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/contact"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/contact"} className={"geex-sidebar__menu__link"}>
                       {"Contact"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/kanban"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/kanban"} className={"geex-sidebar__menu__link"}>
                       {"Kanban"}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -178,49 +179,49 @@ export default function Sidebar() {
                 </a>
                 <ul className={"geex-sidebar__submenu"}>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/chart"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/chart"} className={"geex-sidebar__menu__link"}>
                       {"Chart"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/badge"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/badge"} className={"geex-sidebar__menu__link"}>
                       {"Badge"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/button"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/button"} className={"geex-sidebar__menu__link"}>
                       {"Button"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/color"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/color"} className={"geex-sidebar__menu__link"}>
                       {"Color"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/table"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/table"} className={"geex-sidebar__menu__link"}>
                       {"Table"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/form"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/form"} className={"geex-sidebar__menu__link"}>
                       {"Form"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/icon"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/icon"} className={"geex-sidebar__menu__link"}>
                       {"Icon"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/navigation"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/navigation"} className={"geex-sidebar__menu__link"}>
                       {"Navigation"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/typography"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/typography"} className={"geex-sidebar__menu__link"}>
                       {"Typography"}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -242,69 +243,69 @@ export default function Sidebar() {
                 </a>
                 <ul className={"geex-sidebar__submenu"}>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/blog"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/blog"} className={"geex-sidebar__menu__link"}>
                       {"Blog"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/faq"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/faq"} className={"geex-sidebar__menu__link"}>
                       {"Faq"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/pricing"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/pricing"} className={"geex-sidebar__menu__link"}>
                       {"Pricing"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/testimonial"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/testimonial"} className={"geex-sidebar__menu__link"}>
                       {"Testimonial"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/terms"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/terms"} className={"geex-sidebar__menu__link"}>
                       {"Terms & Conditions"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/signin"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/signin"} className={"geex-sidebar__menu__link"}>
                       {"Sign In"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/signup"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/signup"} className={"geex-sidebar__menu__link"}>
                       {"Sign Up"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/forgot-password"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/forgot-password"} className={"geex-sidebar__menu__link"}>
                       {"Forget Password"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/verification"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/verification"} className={"geex-sidebar__menu__link"}>
                       {"Two Step Verification"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/error"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/error"} className={"geex-sidebar__menu__link"}>
                       {"Error"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/coming-soon"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/coming-soon"} className={"geex-sidebar__menu__link"}>
                       {"Coming Soon"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/maintenance"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/maintenance"} className={"geex-sidebar__menu__link"}>
                       {"Maintenance"}
-                    </a>
+                    </Link>
                   </li>
                   <li className={"geex-sidebar__menu__item"}>
-                    <a href={"/blank"} className={"geex-sidebar__menu__link"}>
+                    <Link href={"/blank"} className={"geex-sidebar__menu__link"}>
                       {"Blank Page"}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>

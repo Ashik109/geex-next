@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DemoAuthForm from "@/components/DemoAuthForm";
 import GeexResources from "@/components/GeexResources";
 export const metadata = { title: "SignIn - Geex Dashboard", icons: { icon: "/assets/img/favicon.svg" } };
@@ -11,10 +12,10 @@ export default function SigninPage() {
           <div className={"geex-content__authentication__content"}>
             <div className={"geex-content__authentication__content__wrapper"}>
               <div className={"geex-content__authentication__content__logo"}>
-                <a href={"/"}>
+                <Link href={"/"}>
                   <img className={"logo-lite"} src={"/assets/img/logo-dark.svg"} alt={"logo"} />
                   <img className={"logo-dark"} src={"/assets/img/logo-lite.svg"} alt={"logo"} />
-                </a>
+                </Link>
               </div>
               <DemoAuthForm id={"signInForm"} className={"geex-content__authentication__form"} preview={"signin"}>
                 <h2 className={"geex-content__authentication__title"}>
@@ -32,9 +33,9 @@ export default function SigninPage() {
                     <label htmlFor={"loginPassword"}>
                       {"Your Password"}
                     </label>
-                    <a href={"/forgot-password"}>
+                    <Link href={"/forgot-password"}>
                       {"Forgot Password?"}
-                    </a>
+                    </Link>
                   </div>
                   <input type={"password"} id={"loginPassword"} name={"loginPassword"} placeholder={"Password"} required />
                   <i className={"uil-eye toggle-password-type"} />
@@ -65,9 +66,9 @@ export default function SigninPage() {
                 </div>
                 <div className={"geex-content__authentication__form-footer"}>
                   {" Doesn't have any account? "}
-                  <a href={"/signup"}>
+                  <Link href={"/signup"}>
                     {"Sign Up"}
-                  </a>
+                  </Link>
                 </div>
               </DemoAuthForm>
             </div>

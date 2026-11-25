@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DemoAuthForm from "@/components/DemoAuthForm";
 import GeexResources from "@/components/GeexResources";
 export const metadata = { title: "Forgot Password - Geex Dashboard", icons: { icon: "/assets/img/favicon.svg" } };
@@ -11,10 +12,10 @@ export default function ForgotPasswordPage() {
           <div className={"geex-content__authentication__content"}>
             <div className={"geex-content__authentication__content__wrapper"}>
               <div className={"geex-content__authentication__content__logo"}>
-                <a href={"/"}>
+                <Link href={"/"}>
                   <img className={"logo-lite"} src={"/assets/img/logo-dark.svg"} alt={"logo"} />
                   <img className={"logo-dark"} src={"/assets/img/logo-lite.svg"} alt={"logo"} />
-                </a>
+                </Link>
               </div>
               <DemoAuthForm id={"signInForm"} className={"geex-content__authentication__form"} preview={"forgot-password"}>
                 <h2 className={"geex-content__authentication__title"}>
@@ -33,9 +34,9 @@ export default function ForgotPasswordPage() {
                 <button type={"submit"} className={"geex-content__authentication__form-submit"}>
                   {"Forget Password"}
                 </button>
-                <a href={"/signin"} className={"geex-content__authentication__form-submit return-btn"}>
+                <Link href={"/signin"} className={"geex-content__authentication__form-submit return-btn"}>
                   {"Back to Login"}
-                </a>
+                </Link>
               </DemoAuthForm>
             </div>
           </div>

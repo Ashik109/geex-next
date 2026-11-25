@@ -1,5 +1,22 @@
-(function ($) {
-	"use strict";
+window.initializeGeexDashboard = function () {
+ const $ = window.jQuery;
+ if (!$) return;
+
+  const cleanups = [];
+  function bindClick(target, handler) {
+    target.on("click.geexPage", handler);
+    cleanups.push(() => target.off("click.geexPage", handler));
+  }
+
+  function renderChart(chart) {
+    if (!chart) return;
+    const rendered = chart.render();
+    cleanups.push(() => chart.destroy());
+    rendered?.catch(error => {
+      if (chart.el?.isConnected) console.error(error);
+    });
+  }
+
 
 	const copyrightYear = new Date().getFullYear();
 	document.querySelectorAll('[data-copyright-year]').forEach(function (element) {
@@ -39,12 +56,14 @@
 			}
 
 			syncDropdown();
-			new MutationObserver(syncDropdown).observe(select.parentElement, {
+			const observer = new MutationObserver(syncDropdown);
+			observer.observe(select.parentElement, {
 				childList: true,
 				subtree: true,
 				attributes: true,
 				attributeFilter: ['class'],
 			});
+			cleanups.push(() => { observer.disconnect(); instance.destroy(); });
 		});
 	}
 
@@ -155,7 +174,7 @@
 	}
 
 	// Light Demo Add
-	$(".geex-customizer__btn--light").click(function() {
+	bindClick($(".geex-customizer__btn--light"), function() {
 		$(".geex-customizer__btn--dark").removeClass("active");
 		$(".geex-customizer__btn--light").addClass("active");
 
@@ -163,7 +182,7 @@
 	})
 
 	// Dark Demo Add
-	$(".geex-customizer__btn--dark").click(function() {
+	bindClick($(".geex-customizer__btn--dark"), function() {
 		$(".geex-customizer__btn--light").removeClass("active");
 		$(".geex-customizer__btn--dark").addClass("active");
 
@@ -171,7 +190,7 @@
 	})
 
 	// LTR Layout Add
-	$(".geex-customizer__btn--ltr").click(function() {
+	bindClick($(".geex-customizer__btn--ltr"), function() {
 		$(".geex-customizer__btn--rtl").removeClass("active");
 		$(".geex-customizer__btn--ltr").addClass("active");
 
@@ -185,7 +204,7 @@
 	})
 
 	// RTL Layout Add
-	$(".geex-customizer__btn--rtl").click(function() {
+	bindClick($(".geex-customizer__btn--rtl"), function() {
 		$(".geex-customizer__btn--ltr").removeClass("active");
 		$(".geex-customizer__btn--rtl").addClass("active");
 		
@@ -193,7 +212,7 @@
   	})
 
 	// Side Navbar Add
-	$(".geex-customizer__btn--side").click(function() {
+	bindClick($(".geex-customizer__btn--side"), function() {
 		$(".geex-customizer__btn--top").removeClass("active");
 		$(".geex-customizer__btn--side").addClass("active");
 
@@ -201,7 +220,7 @@
 	})
 
 	// Top Navbar Add
-	$(".geex-customizer__btn--top").click(function() {
+	bindClick($(".geex-customizer__btn--top"), function() {
 		$(".geex-customizer__btn--side").removeClass("active");
 		$(".geex-customizer__btn--top").addClass("active");
 
@@ -243,7 +262,7 @@
 
 	addActiveClass(pageSlug);
 
-	$(".geex-sidebar__menu__link").click(function() {
+	bindClick($(".geex-sidebar__menu__link"), function() {
 		let $clickedItem = $(this);
 
         // Toggle active class and slideToggle for the clicked item's submenu
@@ -256,19 +275,19 @@
 	})
 
   	// Customizer Toggle
-  	$(".geex-btn__customizer").click(function() {
+	bindClick($(".geex-btn__customizer"), function() {
 		$(".geex-customizer").toggleClass("active");
 		$("body").addClass("overlay_active");
   	});
 
 	// Customizer Close
-	$(".geex-customizer-overlay, .geex-btn__customizer-close").click(function() {
+	bindClick($(".geex-customizer-overlay, .geex-btn__customizer-close"), function() {
 		$(".geex-customizer").removeClass("active");
 		$("body").removeClass("overlay_active");
 	})
 
   	// Sidebar Toggle
-  	$(".geex-btn__toggle-sidebar").click(function(e) {
+	bindClick($(".geex-btn__toggle-sidebar"), function(e) {
 		e.preventDefault();
 		$(".geex-sidebar").toggleClass("active");
 		$(".geex-sidebar").animate({ 
@@ -278,7 +297,7 @@
   	});
 
   	// Sidebar Close
-  	$(".geex-sidebar__close").click(function(e) {
+	bindClick($(".geex-sidebar__close"), function(e) {
 		e.preventDefault();
 		$(".geex-sidebar").removeClass("active");
 		$(".geex-sidebar").animate({ 
@@ -288,40 +307,45 @@
   	});
 
 	// Datepicker Open
-	$("#geex-content__filter__label").click(function() {
-		$('#geex-content__filter__date').datepicker().datepicker('show');
+	bindClick($("#geex-content__filter__label"), function() {
+		const input = $('#geex-content__filter__date');
+    if (!input.hasClass('hasDatepicker')) {
+      input.datepicker();
+      cleanups.push(() => input.datepicker('destroy'));
+    }
+    input.datepicker('show');
   	});
 
   	// Content Toggle
-  	$(".geex-content__toggle__btn").click(function(e) {
+	bindClick($(".geex-content__toggle__btn"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
 		$(this).siblings(".geex-content__toggle__content").slideToggle();
   	});
 
   	// Task Sidebar Toggle
-  	$(".geex-btn__toggle-task").click(function(e) {
+	bindClick($(".geex-btn__toggle-task"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
 		$(".geex-content__todo__sidebar").slideToggle();
   	});
 
   	// Calendar Sidebar Toggle
-  	$(".geex-content__calendar__toggle").click(function(e) {
+	bindClick($(".geex-content__calendar__toggle"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
 		$(".geex-content__calendar__sidebar").slideToggle();
   	});
 
   	// Chat Sidebar Toggle
-  	$(".geex-content__chat__toggle").click(function(e) {
+	bindClick($(".geex-content__chat__toggle"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
 		$(".geex-content__chat__sidebar").slideToggle();
   	});
 
   	// Chat Action Toggle
-  	$(".geex-content__chat__action__toggle__btn").click(function(e) {
+	bindClick($(".geex-content__chat__action__toggle__btn"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
 		$(this).siblings(".geex-content__chat__action__toggle__content").slideToggle();
@@ -330,7 +354,7 @@
 	// Quick Action popups
 	const $quickActionLinks = $(".geex-content__header__quickaction__link");
 	const $quickActionPopups = $(".geex-content__header__popup");
-	$quickActionLinks.attr("aria-expanded", "false").on("click", function (e) {
+	bindClick($quickActionLinks.attr("aria-expanded", "false"), function (e) {
 		e.preventDefault();
 		const $link = $(this);
 		const $popup = $link.siblings(".geex-content__header__popup");
@@ -344,25 +368,25 @@
 
 
 	// Add Todo
-	$(".geex-btn__add-modal").click(function() {
+	bindClick($(".geex-btn__add-modal"), function() {
 		$(".geex-content__modal__form").addClass("active");
 		$("body").addClass("overlay_active");
   	})
 
 	// Close Todo
-	$(".geex-content__modal__form__close").click(function() {
+	bindClick($(".geex-content__modal__form__close"), function() {
 		$(".geex-content__modal__form").removeClass("active");
 		$("body").removeClass("overlay_active");
   	})
 
 	// Chat Mute Toggle
-	$(".geex-content__chat__header__filter__mute-btn").click(function(e) {
+	bindClick($(".geex-content__chat__header__filter__mute-btn"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
 	})
 
 	// Chat Search Toggle
-	$(".geex-content__chat__header__filter__btn").click(function(e) {
+	bindClick($(".geex-content__chat__header__filter__btn"), function(e) {
 		e.preventDefault();
 		
 		var $clickedItem = $(this);
@@ -379,7 +403,7 @@
 	})
 
 	// Toggle Input Type Password
-	$(".toggle-password-type").click(function(e) {
+	bindClick($(".toggle-password-type"), function(e) {
 		e.preventDefault();
 		const input = $(this).siblings("input");
 	
@@ -395,7 +419,7 @@
 	});
 
 	// Invoice Chat Toggle
-	$(".geex-content__invoice__chat__toggler").click(function(e) {
+	bindClick($(".geex-content__invoice__chat__toggler"), function(e) {
 		e.preventDefault();
 		var $invoiceChatContent = $(this).siblings('.geex-content__invoice__chat__wrapper');
 	
@@ -417,6 +441,7 @@
     }
     const fields = ["days", "hours", "minutes", "seconds"].map(unit => countdown.querySelector(".geex-countdown__" + unit));
     const timer = setInterval(updateCountdown, 1000);
+    cleanups.push(() => clearInterval(timer));
     updateCountdown();
 
     function updateCountdown() {
@@ -470,6 +495,9 @@
 		},
 	});
 
+  if (swiper) cleanups.push(() => swiper.destroy(true, false));
+  if (testi) cleanups.push(() => testi.destroy(true, false));
+
   // Calendar
   const calendarElement = document.getElementById("geex-calendar");
   if (calendarElement && window.FullCalendar) {
@@ -488,6 +516,7 @@
       slotMaxTime: "21:00:00",
     });
     calendar.render();
+    cleanups.push(() => calendar.destroy());
   }
 
   // Line Chart
@@ -627,7 +656,7 @@
 
 	let lineChartContainer = document.querySelector("#line-chart");
 	let lineChart = lineChartContainer && new ApexCharts(lineChartContainer, lineOptions);
-	lineChart && lineChart.render();
+	renderChart(lineChart);
 
 
 	// Line Chart
@@ -767,17 +796,17 @@
 	// Bitcoin
 	let bitcoinChartContainer = document.querySelector("#bitcoin-chart");
 	let bitcoinChart = bitcoinChartContainer && new ApexCharts(bitcoinChartContainer, bitcoinOptions);
-	bitcoinChart && bitcoinChart.render();
+	renderChart(bitcoinChart);
 
 	// Ethererum
 	let ethererumChartContainer = document.querySelector("#ethererum-chart");
 	let ethererumChart = ethererumChartContainer && new ApexCharts(ethererumChartContainer, bitcoinOptions);
-	ethererumChart && ethererumChart.render();
+	renderChart(ethererumChart);
 
 	// Litecoin
 	let litecoinChartContainer = document.querySelector("#litecoin-chart");
 	let litecoinChart = litecoinChartContainer && new ApexCharts(litecoinChartContainer, bitcoinOptions);
-	litecoinChart && litecoinChart.render();
+	renderChart(litecoinChart);
 
 
 	// Market Activity Chart
@@ -923,7 +952,7 @@
 
 	let activityChartContainer = document.querySelector("#market-activity-chart");
 	let activityChart = activityChartContainer && new ApexCharts(activityChartContainer, activityOptions);
-	activityChart && activityChart.render();
+	renderChart(activityChart);
 
 	// Bar Chart
 	let barOptions = {
@@ -1001,7 +1030,7 @@
 
 	let barChartContainer = document.querySelector("#column-chart");
 	let barChart = barChartContainer && new ApexCharts(barChartContainer, barOptions);
-	barChart && barChart.render();
+	renderChart(barChart);
 
 	// Pie Chart
 	let pieOptions = {
@@ -1060,7 +1089,7 @@
 
 	let pieChartContainer = document.querySelector("#pie-chart");
 	let pieChart = pieChartContainer && new ApexCharts(pieChartContainer, pieOptions);
-	pieChart && pieChart.render();
+	renderChart(pieChart);
 
 
 	// Summary Chart
@@ -1120,7 +1149,7 @@
 
 	let summaryChartContainer = document.querySelector("#summary-chart");
 	let summaryChart = summaryChartContainer && new ApexCharts(summaryChartContainer, summaryOptions);
-	summaryChart && summaryChart.render();
+	renderChart(summaryChart);
 
 	// Stack Chart
 	let stackOptions = {
@@ -1201,7 +1230,7 @@
 
 	let stackChartContainer = document.querySelector("#stack-chart");
 	let stackChart = stackChartContainer && new ApexCharts(stackChartContainer, stackOptions);
-	stackChart && stackChart.render();
+	renderChart(stackChart);
 
 	// Income Chart
 	let incomeOptions = {
@@ -1300,7 +1329,7 @@
 	
 	let incomeChartContainer = document.querySelector("#income-chart");
 	let incomeChart = incomeChartContainer && new ApexCharts(incomeChartContainer, incomeOptions);
-	incomeChart && incomeChart.render();
+	renderChart(incomeChart);
 
 	// Expense Chart
 	let expenseOptions = {
@@ -1399,7 +1428,7 @@
 	
 	let expenseChartContainer = document.querySelector("#expense-chart");
 	let expenseChart = expenseChartContainer && new ApexCharts(expenseChartContainer, expenseOptions);
-	expenseChart && expenseChart.render();
+	renderChart(expenseChart);
 
 
 
@@ -1439,7 +1468,7 @@
 			labels: ["Median Ratio"]
 		};
 		var chart = new ApexCharts(document.querySelector("#chart-5"), options);
-		chart.render();
+		renderChart(chart);
 	};
 
 
@@ -1479,7 +1508,7 @@
 			labels: ["Median Ratio"]
 		};
 		var chart = new ApexCharts(document.querySelector("#chart-6"), optionsTwo);
-		chart.render();
+		renderChart(chart);
 	};
 
 	if($("#chart-7").length){
@@ -1519,7 +1548,7 @@
 		};
 	
 		var chart = new ApexCharts(document.querySelector("#chart-7"), optionsThree);
-		chart.render();
+		renderChart(chart);
 	};
 
 	if($("#chart-8").length){
@@ -1559,12 +1588,12 @@
 		};
 		
 		var chart = new ApexCharts(document.querySelector("#chart-8"), optionsFour);
-		chart.render();
+		renderChart(chart);
 	};
 
 
 	// Kanban Board JS
-	$(document).ready(function() {
+	function initializeKanban() {
     const columns = ["one", "two", "three", "four", "five", "won"].map(id => document.getElementById(id)).filter(Boolean);
     if (!columns.length || typeof window.dragula !== "function") return;
     const drake = window.dragula(columns);
@@ -1576,8 +1605,12 @@
 		drake.on('drop', function(el){
 			el.classList.remove('gu-transit');
 		});
-	});
+    cleanups.push(() => drake.destroy());
+  }
+  initializeKanban();
 
-
-
-})(jQuery);
+  return () => {
+    for (const dispose of cleanups.reverse()) dispose();
+    document.body.classList.remove("overlay_active");
+  };
+};
