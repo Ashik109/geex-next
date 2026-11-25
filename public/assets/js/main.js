@@ -2,6 +2,24 @@ window.initializeGeexDashboard = function () {
  const $ = window.jQuery;
  if (!$) return;
 
+  const memory = window.geexPreviewStorage ??= new Map();
+  function readPreference(key) {
+    if (memory.has(key)) return memory.get(key);
+    try {
+      return window.localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  }
+  function writePreference(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+      memory.delete(key);
+    } catch {
+      memory.set(key, value);
+    }
+  }
+
   const cleanups = [];
   function bindClick(target, handler) {
     target.on("click.geexPage", handler);
@@ -69,9 +87,9 @@ window.initializeGeexDashboard = function () {
 
 	// LocalStorage JS
 	let html = document.documentElement;
-	let geexTheme = localStorage.theme;
-	let geexThemeLayout = localStorage.layout;
-	let geexThemeNavbar = localStorage.navbar;
+	let geexTheme = readPreference("theme");
+	let geexThemeLayout = readPreference("layout");
+	let geexThemeNavbar = readPreference("navbar");
 
 	let darkMode = geexTheme === "dark";
 	let rtlLayout = geexThemeLayout === "rtl";
@@ -82,12 +100,9 @@ window.initializeGeexDashboard = function () {
 		html.setAttribute("data-theme", geexTheme);
 
 		if (geexTheme === "dark") {
-			localStorage.theme === "dark"
 			$(".geex-customizer__btn--light").removeClass("active");
 			$(".geex-customizer__btn--dark").addClass("active");
 			
-		} else {
-			localStorage.theme === "light"
 		}
 	}
 
@@ -97,11 +112,8 @@ window.initializeGeexDashboard = function () {
 		html.setAttribute("dir", geexThemeLayout);
 
 		if (geexThemeLayout === "rtl") {
-			localStorage.themeLayout === "rtl"
 			$(".geex-customizer__btn--ltr").removeClass("active");
 			$(".geex-customizer__btn--rtl").addClass("active");
-		} else {
-			localStorage.themeLayout === "ltr"
 		}
 	}
 
@@ -111,18 +123,15 @@ window.initializeGeexDashboard = function () {
 		html.setAttribute("data-nav", geexThemeNavbar);
 
 		if (geexThemeNavbar === "top") {
-			localStorage.themeNavbar === "top"
 			$(".geex-customizer__btn--side").removeClass("active");
 			$(".geex-customizer__btn--top").addClass("active");
-		} else {
-			localStorage.themeNavbar === "side"
 		}
 	}
 	
 	// Dark Theme
 	function darkTheme(e) {
 		let geexTheme = "dark";
-		localStorage.theme = geexTheme;
+		writePreference("theme", geexTheme);
 		document.documentElement.setAttribute("data-theme", geexTheme);
 
 		darkMode = true;
@@ -131,7 +140,7 @@ window.initializeGeexDashboard = function () {
 	// Light Theme 
 	function lightTheme(e) {
 		let geexTheme = "light";
-		localStorage.theme = geexTheme;
+		writePreference("theme", geexTheme);
 		document.documentElement.setAttribute("data-theme", geexTheme);
 
 		darkMode = false;
@@ -140,7 +149,7 @@ window.initializeGeexDashboard = function () {
 	// RTL Layout
 	function rtlTheme(e) {
 		let geexThemeLayout = "rtl";
-		localStorage.layout = geexThemeLayout;
+		writePreference("layout", geexThemeLayout);
 		document.documentElement.setAttribute("dir", geexThemeLayout);
 
 		rtlLayout = true;
@@ -149,7 +158,7 @@ window.initializeGeexDashboard = function () {
 	// LTR Layout
 	function ltrTheme(e) {
 		let geexThemeLayout = "ltr";
-		localStorage.layout =  geexThemeLayout;
+		writePreference("layout", geexThemeLayout);
 		document.documentElement.setAttribute("dir", geexThemeLayout);
 
 		rtlLayout = false;
@@ -158,7 +167,7 @@ window.initializeGeexDashboard = function () {
 	// Top Navbar
 	function topTheme(e) {
 		let geexThemeNavbar = "top";
-		localStorage.navbar = geexThemeNavbar;
+		writePreference("navbar", geexThemeNavbar);
 		document.documentElement.setAttribute("data-nav", geexThemeNavbar);
 
 		topMenu = true;
@@ -167,7 +176,7 @@ window.initializeGeexDashboard = function () {
 	// Side Navbar
 	function sideTheme(e) {
 		let geexThemeNavbar = "side";
-		localStorage.navbar =  geexThemeNavbar;
+		writePreference("navbar", geexThemeNavbar);
 		document.documentElement.setAttribute("data-nav", geexThemeNavbar);
 
 		topMenu = false;
@@ -379,7 +388,35 @@ window.initializeGeexDashboard = function () {
 		$("body").removeClass("overlay_active");
   	})
 
-	// Chat Mute Toggle
+  // Send a message into the current demo conversation.
+  const chatInputs = $('.geex-content__chat__send input[name="chat"]');
+  function sendChat(composer) {
+    const input = composer.find('input[name="chat"]');
+    const list = composer.prev('.geex-content__chat__list');
+    const message = input.val().trim();
+    if (!list.length || !message) return;
+    const bubble = $('<div>', { class: 'geex-content__chat__list__single' });
+    const text = $('<div>', { class: 'geex-content__chat__list__single__text' });
+    text.append($('<span>', { class: 'geex-content__chat__list__single__title' }).text('You'));
+    text.append($('<span>', { class: 'geex-content__chat__list__single__msg latest' }).text(message));
+    bubble.append(text);
+    list.append(bubble);
+    input.val('').trigger('focus');
+    list.scrollTop(list.prop('scrollHeight'));
+  }
+  bindClick($('.geex-content__chat__send .btn-send'), function() {
+    sendChat($(this).closest('.geex-content__chat__send'));
+  });
+  function handleChatEnter(event) {
+    if (event.key === "Enter" && !event.originalEvent?.isComposing) {
+      event.preventDefault();
+      sendChat($(this).closest('.geex-content__chat__send'));
+    }
+  }
+  chatInputs.on('keydown.geexPage', handleChatEnter);
+  cleanups.push(() => chatInputs.off('keydown.geexPage', handleChatEnter));
+
+  // Chat Mute Toggle
 	bindClick($(".geex-content__chat__header__filter__mute-btn"), function(e) {
 		e.preventDefault();
 		$(this).toggleClass("active");
@@ -434,10 +471,10 @@ window.initializeGeexDashboard = function () {
   if (countdown) {
     const dayLength = 86400000;
     const key = "geex-demo-launch-date";
-    let deadline = Number(localStorage.getItem(key));
+    let deadline = Number(readPreference(key));
     if (!Number.isFinite(deadline) || deadline <= 0) {
       deadline = Date.now() + 7 * dayLength;
-      localStorage.setItem(key, String(deadline));
+      writePreference(key, String(deadline));
     }
     const fields = ["days", "hours", "minutes", "seconds"].map(unit => countdown.querySelector(".geex-countdown__" + unit));
     const timer = setInterval(updateCountdown, 1000);
@@ -515,8 +552,29 @@ window.initializeGeexDashboard = function () {
       slotMinTime: "06:00:00",
       slotMaxTime: "21:00:00",
     });
+    let localEvents;
+    function loadLocalEvents() {
+      localEvents?.remove();
+      try {
+        const records = JSON.parse(readPreference("geex-demo:calendar") || "[]");
+        localEvents = calendar.addEventSource(records.map(record => ({
+          id: record.id,
+          title: record.title,
+          start: record.date,
+          allDay: true,
+        })));
+      } catch {}
+    }
+    function handleLocalEvent(event) {
+      if (event.detail === "calendar") loadLocalEvents();
+    }
+    loadLocalEvents();
     calendar.render();
-    cleanups.push(() => calendar.destroy());
+    window.addEventListener("geex:demo-records", handleLocalEvent);
+    cleanups.push(() => {
+      window.removeEventListener("geex:demo-records", handleLocalEvent);
+      calendar.destroy();
+    });
   }
 
   // Line Chart

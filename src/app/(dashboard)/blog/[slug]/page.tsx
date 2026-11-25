@@ -1,3 +1,4 @@
+import { DemoRecordForm, DemoRecordList } from "@/components/DemoRecords";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts, blogPostPath } from "@/data/blog-posts";
@@ -144,20 +145,21 @@ export default async function BlogDetailsPage({ params }: PageProps<"/blog/[slug
                       <p className={"geex-content__blog_details__comment__subtitle"}>
                         {"Your email address will not be published. Required fields are marked *"}
                       </p>
-                      <form action={"#"} className={"geex-content__blog_details__comment__form"}>
+                      <DemoRecordList scope={`comment:${slug}`} label="Your Comments" />
+                      <DemoRecordForm id="comment-form" scope={`comment:${slug}`} className="geex-content__blog_details__comment__form">
                         <div className={"geex-content__blog_details__comment__form__group"}>
-                          <input type={"text"} className={"form-item"} placeholder={"Name*"} required />
-                          <input type={"email"} className={"form-item"} placeholder={"Email*"} required />
+                          <input type="text" name="title" aria-label="Name" className="form-item" placeholder="Name" maxLength={120} required />
+
                         </div>
                         <div className={"geex-content__blog_details__comment__form__group"}>
-                          <textarea name={"text"} placeholder={"Comment*"} required />
+                          <textarea name="description" aria-label="Comment" maxLength={1500} placeholder="Comment" required />
                         </div>
                         <div className={"geex-content__blog_details__comment__form__group"}>
                           <button type={"submit"} className={"submit-btn"}>
                             {"Post Comments"}
                           </button>
                         </div>
-                      </form>
+                      </DemoRecordForm>
                     </div>
                   </div>
                 </article>

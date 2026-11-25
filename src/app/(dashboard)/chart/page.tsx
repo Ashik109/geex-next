@@ -57,8 +57,8 @@ export default function ChartPage() {
                       </div>
                       <div className={"geex-content__section__header__content-part"}>
                         <div className={"geex-content__section__header__btn"}>
-                          <a href={"#"} className={"geex-content__section__header__link"}>
-                            {" View More "}
+                          <a href="#column-chart" className={"geex-content__section__header__link"}>
+                            {" View Chart "}
                           </a>
                         </div>
                       </div>
@@ -91,7 +91,7 @@ export default function ChartPage() {
                       </div>
                       <div className={"geex-content__section__header__content-part"}>
                         <div className={"geex-content__section__header__btn"}>
-                          <a href={"#"} className={"geex-content__section__header__link"}>
+                          <a href="/assets/geex-sample-report.csv" download className={"geex-content__section__header__link"}>
                             {" Download Report "}
                           </a>
                         </div>

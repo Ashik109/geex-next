@@ -9,6 +9,12 @@ export default function DemoAuthForm({ children, preview, ...attributes }: Props
   return (
     <form {...attributes} method="post" onSubmit={event => {
       event.preventDefault();
+      const fields = new FormData(event.currentTarget);
+      if (preview === "signup" && fields.get("loginPassword") !== fields.get("confirmPassword")) {
+        setMessage("Passwords must match.");
+        return;
+      }
+      event.currentTarget.reset();
       setMessage(preview === "forgot-password"
         ? "Reset form validated. The demo does not send email."
         : "Form validated. This is an account UI preview.");

@@ -1,3 +1,4 @@
+import { DemoRecordForm, DemoRecordList } from "@/components/DemoRecords";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -25,6 +26,7 @@ export default function TodoPage() {
             </div>
             <HeaderActions />
           </div>
+          <DemoRecordList scope="todo" label="Your Tasks" />
           <div className={"geex-content__wrapper"}>
             <div className={"geex-content__section-wrapper"}>
               <button className={"geex-btn geex-btn__toggle-task"}>
@@ -1146,16 +1148,16 @@ export default function TodoPage() {
                       <i className={"uil-times"} />
                     </button>
                   </div>
-                  <form className={"geex-content__modal__form__wrapper"}>
+                  <DemoRecordForm scope="todo" className="geex-content__modal__form__wrapper">
                     <div className={"geex-content__modal__form__item"}>
-                      <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Title"} />
+                      <input type={"text"} name="title" className={"geex-content__modal__form__input"} placeholder="Title" aria-label="Title" required maxLength={120} />
                     </div>
                     <div className={"geex-content__modal__form__item"}>
-                      <textarea name={"geex-content__modal__form__desc"} className={"geex-content__modal__form__input geex-content__modal__form__input--textarea"} placeholder={"Description"} />
+                      <textarea name="description" aria-label="Description" maxLength={500} className={"geex-content__modal__form__input geex-content__modal__form__input--textarea"} placeholder={"Description"} />
                     </div>
                     <div className={"geex-content__modal__form__item"}>
                       <h4 className={"geex-content__modal__form__item__title"}>
-                        {"Due Date"}
+                        {"Labels"}
                       </h4>
                       <div className={"geex-content__modal__form__item__single"}>
                         <input type={"checkbox"} id={"geex-content__modal__team"} name={"geex-content__modal__team"} defaultValue={"Team"} />
@@ -1193,7 +1195,7 @@ export default function TodoPage() {
                         {"Submit"}
                       </button>
                     </div>
-                  </form>
+                  </DemoRecordForm>
                 </div>
               </div>
             </div>

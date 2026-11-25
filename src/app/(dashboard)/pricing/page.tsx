@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -83,9 +84,9 @@ export default function PricingPage() {
                         </li>
                       </ul>
                       <div className={"geex-content__pricing__btn-part"}>
-                        <a className={"geex-content__pricing__btn"} href={""}>
+                        <Link className="geex-content__pricing__btn" href="/signup">
                           {"Try for Free"}
-                        </a>
+                        </Link>
                       </div>
                       <span className={"geex-content__pricing__profit"}>
                         {"$999 billed annually. Save $189."}
@@ -148,9 +149,9 @@ export default function PricingPage() {
                         </li>
                       </ul>
                       <div className={"geex-content__pricing__btn-part"}>
-                        <a className={"geex-content__pricing__btn"} href={""}>
+                        <Link className="geex-content__pricing__btn" href="/signup">
                           {"Try for Free"}
-                        </a>
+                        </Link>
                       </div>
                       <span className={"geex-content__pricing__profit"}>
                         {"$999 billed annually. Save $189."}
@@ -213,9 +214,9 @@ export default function PricingPage() {
                         </li>
                       </ul>
                       <div className={"geex-content__pricing__btn-part"}>
-                        <a className={"geex-content__pricing__btn"} href={""}>
+                        <Link className="geex-content__pricing__btn" href="/signup">
                           {"Try for Free"}
-                        </a>
+                        </Link>
                       </div>
                       <span className={"geex-content__pricing__profit"}>
                         {"$999 billed annually. Save $189."}
@@ -278,9 +279,9 @@ export default function PricingPage() {
                         </li>
                       </ul>
                       <div className={"geex-content__pricing__btn-part"}>
-                        <a className={"geex-content__pricing__btn"} href={""}>
+                        <Link className="geex-content__pricing__btn" href="/signup">
                           {"Try for Free"}
-                        </a>
+                        </Link>
                       </div>
                       <span className={"geex-content__pricing__profit"}>
                         {"$999 billed annually. Save $189."}
@@ -343,9 +344,9 @@ export default function PricingPage() {
                         </li>
                       </ul>
                       <div className={"geex-content__pricing__btn-part"}>
-                        <a className={"geex-content__pricing__btn"} href={""}>
+                        <Link className="geex-content__pricing__btn" href="/signup">
                           {"Try for Free"}
-                        </a>
+                        </Link>
                       </div>
                       <span className={"geex-content__pricing__profit"}>
                         {"$999 billed annually. Save $189."}
@@ -408,9 +409,9 @@ export default function PricingPage() {
                         </li>
                       </ul>
                       <div className={"geex-content__pricing__btn-part"}>
-                        <a className={"geex-content__pricing__btn"} href={""}>
+                        <Link className="geex-content__pricing__btn" href="/signup">
                           {"Try for Free"}
-                        </a>
+                        </Link>
                       </div>
                       <span className={"geex-content__pricing__profit"}>
                         {"$999 billed annually. Save $189."}

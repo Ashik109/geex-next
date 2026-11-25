@@ -12521,3 +12521,23 @@ html[data-nav="top"] .kanban-drag-and-drop-area-wrapper .content .stage {
 @font-face { font-family: Jost; src: url("../vendor/fonts/Jost-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
 @font-face { font-family: Jost; src: url("../vendor/fonts/Jost-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
 @font-face { font-family: Jost; src: url("../vendor/fonts/Jost-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+
+
+.geex-demo-records {
+  background: var(--white-color, #fff);
+  color: var(--body-color, inherit);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .geex-demo-records {
+  background: #20202b;
+  color: #fff;
+}
+
+.geex-demo-records h3 { font-size: 18px; }
+.geex-demo-records ul { padding: 0; margin: 0; }
+.geex-demo-records li { display: flex; align-items: start; justify-content: space-between; gap: 12px; padding: 10px 0; overflow-wrap: anywhere; }
+.geex-demo-records li p { margin: 4px 0 0; white-space: pre-wrap; }
+.geex-demo-remove { flex: none; color: inherit; border: 1px solid currentColor; border-radius: 6px; background: transparent; padding: 4px 8px; }

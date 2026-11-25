@@ -1,3 +1,4 @@
+import { DemoRecordForm } from "@/components/DemoRecords";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -132,19 +133,22 @@ export default function CalendarPage() {
                         <i className={"uil-times"} />
                       </button>
                     </div>
-                    <form className={"geex-content__modal__form__wrapper"}>
+                    <DemoRecordForm scope="calendar" className="geex-content__modal__form__wrapper">
                       <div className={"geex-content__modal__form__item"}>
-                        <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Event Title"} />
+                        <input type={"text"} name="title" className={"geex-content__modal__form__input"} placeholder="Event Title" aria-label="Event Title" required maxLength={120} />
                       </div>
                       <div className={"geex-content__modal__form__item"}>
-                        <textarea name={"geex-content__modal__form__desc"} className={"geex-content__modal__form__input geex-content__modal__form__input--textarea"} placeholder={"Event Description"} />
+                        <textarea name="description" aria-label="Description" maxLength={500} className={"geex-content__modal__form__input geex-content__modal__form__input--textarea"} placeholder={"Event Description"} />
                       </div>
                       <div className={"geex-content__modal__form__item"}>
+                        <label>Event date <input type="date" name="date" className="geex-content__modal__form__input" required /></label>
+                      </div>
+                      <div className="geex-content__modal__form__item">
                         <button type={"submit"} className={"geex-content__modal__form__submit"}>
                           {"Submit"}
                         </button>
                       </div>
-                    </form>
+                    </DemoRecordForm>
                   </div>
                   <div id={"geex-calendar"} className={"geex-calendar"} />
                 </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function HeaderActions() {
   return (
@@ -255,42 +256,42 @@ export default function HeaderActions() {
                 <div className={"geex-content__header__popup__content"}>
                   <ul className={"geex-content__header__popup__items"}>
                     <li className={"geex-content__header__popup__item"}>
-                      <a className={"geex-content__header__popup__link"} href={"#"}>
+                      <Link className="geex-content__header__popup__link" href="/contact">
                         <i className={"uil uil-user"} />
-                        {" Profile "}
-                      </a>
+                        Contacts
+                      </Link>
                     </li>
                     <li className={"geex-content__header__popup__item"}>
-                      <a className={"geex-content__header__popup__link"} href={"#"}>
+                      <Link className="geex-content__header__popup__link" href="/form">
                         <i className={"uil uil-cog"} />
-                        {" Settings "}
-                      </a>
+                        Form Settings Demo
+                      </Link>
                     </li>
                     <li className={"geex-content__header__popup__item"}>
-                      <a className={"geex-content__header__popup__link"} href={"#"}>
+                      <Link className="geex-content__header__popup__link" href="/index-4">
                         <i className={"uil uil-dollar-alt"} />
-                        {" Billing "}
-                      </a>
+                        Invoicing
+                      </Link>
                     </li>
                     <li className={"geex-content__header__popup__item"}>
-                      <a className={"geex-content__header__popup__link"} href={"#"}>
+                      <Link className="geex-content__header__popup__link" href="/calendar">
                         <i className={"uil uil-users-alt"} />
-                        {" Activity "}
-                      </a>
+                        Calendar
+                      </Link>
                     </li>
                     <li className={"geex-content__header__popup__item"}>
-                      <a className={"geex-content__header__popup__link"} href={"#"}>
+                      <Link className="geex-content__header__popup__link" href="/faq">
                         <i className={"uil uil-bell"} />
-                        {" Help "}
-                      </a>
+                        Help
+                      </Link>
                     </li>
                   </ul>
                 </div>
                 <div className={"geex-content__header__popup__footer"}>
-                  <a href={"#"} className={"geex-content__header__popup__footer__link"}>
+                  <Link href="/signin" className="geex-content__header__popup__footer__link">
                     <i className={"uil uil-arrow-up-left"} />
-                    {"Logout "}
-                  </a>
+                    Sign-in Demo
+                  </Link>
                 </div>
               </div>
             </li>

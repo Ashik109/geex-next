@@ -1,3 +1,4 @@
+import { DemoRecordForm, DemoRecordList } from "@/components/DemoRecords";
 import Customizer from "@/components/Customizer";
 import Header from "@/components/Header";
 import HeaderActions from "@/components/HeaderActions";
@@ -25,6 +26,7 @@ export default function ContactPage() {
             </div>
             <HeaderActions />
           </div>
+          <DemoRecordList scope="contact" label="Your Contacts" />
           <div className={"geex-content__wrapper"}>
             <div className={"geex-content__section-wrapper"}>
               <div className={"geex-content__section geex-content__section--transparent geex-content__todo"}>
@@ -1631,28 +1633,28 @@ export default function ContactPage() {
                     <i className={"uil-times"} />
                   </button>
                 </div>
-                <form className={"geex-content__modal__form__wrapper"}>
+                <DemoRecordForm scope="contact" className="geex-content__modal__form__wrapper">
                   <div className={"geex-content__modal__form__item"}>
-                    <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Name"} />
+                    <input type={"text"} name="title" className={"geex-content__modal__form__input"} placeholder="Name" aria-label="Name" required maxLength={120} />
                   </div>
                   <div className={"geex-content__modal__form__item"}>
-                    <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Designation"} />
+                    <input type={"text"} name="designation" className={"geex-content__modal__form__input"} placeholder="Designation" aria-label="Designation" maxLength={160} />
                   </div>
                   <div className={"geex-content__modal__form__item"}>
-                    <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Studio Name"} />
+                    <input type={"text"} name="company" className={"geex-content__modal__form__input"} placeholder="Studio Name" aria-label="Studio Name" maxLength={160} />
                   </div>
                   <div className={"geex-content__modal__form__item"}>
-                    <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Phone Number"} />
+                    <input type="tel" name="phone" className={"geex-content__modal__form__input"} placeholder="Phone Number" aria-label="Phone Number" maxLength={160} />
                   </div>
                   <div className={"geex-content__modal__form__item"}>
-                    <input type={"text"} name={"geex-content__modal__form__name"} className={"geex-content__modal__form__input"} placeholder={"Email Address"} />
+                    <input type="email" name="email" className={"geex-content__modal__form__input"} placeholder="Email Address" aria-label="Email Address" maxLength={160} />
                   </div>
                   <div className={"geex-content__modal__form__item"}>
                     <button type={"submit"} className={"geex-content__modal__form__submit"}>
                       {"Submit"}
                     </button>
                   </div>
-                </form>
+                </DemoRecordForm>
               </div>
             </div>
           </div>
